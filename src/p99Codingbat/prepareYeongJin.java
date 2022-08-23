@@ -20,7 +20,7 @@ public class prepareYeongJin {
 		long n = (int)(Math.random()*10000);
 		System.out.println(n);
         for (long i = 2; i<=100; i++) {       	        
-	        if ((n/i)==i) { Long.MAX_VALUE
+	        if ((n/i)==i) {
 	        	System.out.println(i+"잘하고있어");
 	        } else {
 //	        	System.out.println("다시");
