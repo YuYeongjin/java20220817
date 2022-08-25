@@ -2,32 +2,34 @@ package p99Codingbat;
 
 public class prepareYeongJin {
 	public static void main(String[] args) {
-//		int num = 626331;
-//		int answer = 0;       
-//        while(num!=1){
-//            if(num%2==0){
-//                num=num/2;
-//                answer++;
-//            } else {
-//                num=(num*3)+1;
-//                answer++;
-//            }  
-//        }      
-//        if (answer>500){
-//            answer=-1;
-//        }
-//        System.out.println(answer);
-		long n = (int)(Math.random()*10000);
-		System.out.println(n);
-        for (long i = 2; i<=100; i++) {       	        
-	        if ((n/i)==i) {
-	        	System.out.println(i+"잘하고있어");
-	        } else {
-//	        	System.out.println("다시");
-	        }
-        	
-        	
-        }
+		System.out.println(sum67 (new int[] {1,2,2}));
+
 	}
+
+	public static int sum67(int[] nums) {
+		  int result=0;
+		  int num1=0;
+		  int num2=0;
+		  
+		  if(nums.length>1){
+		    for(int i = 0; i <nums.length; i++){
+		      result+=nums[i];
+		      for(int j = 0; j<nums.length; j++){
+		        if (nums[i]==6){
+		          num1=i;
+		          if(nums[j]==7){
+		            num2=j;
+		          }
+		        }
+		      }
+		    }
+		  }
+		  if(num1>0&&num2>0){
+		    for (int i = num1; i<=num2; i++){
+		      result -=nums[i];
+		    } 
+		  }
+		  return result;
+		}
 
 }

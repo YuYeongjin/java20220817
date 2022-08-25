@@ -22,7 +22,7 @@ public class C09Reference {
 		System.out.println(b[0][0]); // 7
 
 
-		System.out.println(Max.min(Arrays.toString(a[0])));
+		System.out.println(Arrays.toString(a[0]));
 		
 	}
 }
