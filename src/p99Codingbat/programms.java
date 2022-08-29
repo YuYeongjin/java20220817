@@ -4,33 +4,24 @@ import java.util.Arrays;
 
 public class programms {
 	public static void main(String[] args) {
-		long n = 10000000000L;
-//		long n = 9999999999L;
-		
-		int[] answer = {};
-        int[] a = new int[11];
-        long b= n;
-        int count=0;
-        
-        System.out.println(b);
-        for(int i =0; i<a.length; i++){
-            a[i]=(int)(b%10);
-            b=b/10;            
-        }   
-        System.out.println(Arrays.toString(a));
-        for(int i = 11; i>0; i--) {
-        	System.out.println(a[i-1]);
-        	if (a[i-1]!=0){
-        		count = i;
-        		break;
-        	}
-        }
-        System.out.println(count);
-        answer = new int[count];
-        for(int i =0; i<answer.length; i++){
-            answer[i]=(int)(n%10);
-            n=n/10;            
-        } 
-	    System.out.println(Arrays.toString(answer));
+
+		long n = 125213;
+		long answer = 0;
+		String c = "";
+		String a = "" + n;
+		int[] b = new int[a.length()];
+		for (int i = 0; i < a.length(); i++) {
+			b[i] = Character.getNumericValue(a.charAt(i));
+		}
+//        System.out.println(Arrays.toString(b));
+
+		Arrays.parallelSort(b);
+		System.out.println(Arrays.toString(b));
+		System.out.println(b.length);
+		for (int j = b.length - 1; j > 0; j--) {
+			c += b[j];
+		}
+		answer = Long.valueOf(c);
+		System.out.println(answer);
 	}
-}        
+}
