@@ -10,7 +10,9 @@ public class C01Extends {
 		System.out.println(o1.age);
 		
 		o2.age = 44;
+		o2.name = "coyote";
 		o2.method1();
+		o2.method2();
 		System.out.println(o2.age);
 	}
 }
