@@ -1,35 +1,31 @@
 package p99Codingbat;
 
+import java.util.Arrays;
+
 public class prepareYeongJin {
 	public static void main(String[] args) {
-		System.out.println(sum67 (new int[] {1,2,2}));
-
+		int n = 3;
+		int[] works= {1,1};
+		
+		long answer = 0;
+        int maxWork=0;
+        while(n!=0){
+        	int max = 0;
+    	    for(int i =0;i<works.length; i++){
+    	        if(max<works[i]){
+    	            max=works[i];
+    	        }
+    	    }
+    	    maxWork = Arrays.asList(works).indexOf(max);    	
+            if(works[maxWork]!=0) {
+            	works[maxWork]-=1;
+            }
+            n--;
+            System.out.println(Arrays.toString(works));          
+        }               
+        for(int k=0; k<works.length;k++){        	
+        	answer += Math.pow(works[k],2);      
+        }
+        System.out.println(answer);
 	}
-
-	public static int sum67(int[] nums) {
-		  int result=0;
-		  int num1=0;
-		  int num2=0;
-		  
-		  if(nums.length>1){
-		    for(int i = 0; i <nums.length; i++){
-		      result+=nums[i];
-		      for(int j = 0; j<nums.length; j++){
-		        if (nums[i]==6){
-		          num1=i;
-		          if(nums[j]==7){
-		            num2=j;
-		          }
-		        }
-		      }
-		    }
-		  }
-		  if(num1>0&&num2>0){
-		    for (int i = num1; i<=num2; i++){
-		      result -=nums[i];
-		    } 
-		  }
-		  return result;
-		}
-
 }
