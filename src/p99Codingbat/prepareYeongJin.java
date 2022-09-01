@@ -1,27 +1,25 @@
 package p99Codingbat;
 
-import java.util.Arrays;
-
 public class prepareYeongJin {
 	public static void main(String[] args) {
-		int n = 3;
-		int[] works= {1,1};
+		int n = 4;
+		int[] works= {4,3,3};
 		
 		long answer = 0;
-        int maxWork=0;
+        
         while(n!=0){
-        	int max = 0;
+            int iValue=0;
+        	int max = Integer.MIN_VALUE;
     	    for(int i =0;i<works.length; i++){
     	        if(max<works[i]){
     	            max=works[i];
+                    iValue=i;
     	        }
-    	    }
-    	    maxWork = Arrays.asList(works).indexOf(max);    	
-            if(works[maxWork]!=0) {
-            	works[maxWork]-=1;
+    	    }	
+    	    if(works[iValue]!=0) {
+            	works[iValue]-=1;
             }
-            n--;
-            System.out.println(Arrays.toString(works));          
+            n--;    
         }               
         for(int k=0; k<works.length;k++){        	
         	answer += Math.pow(works[k],2);      
