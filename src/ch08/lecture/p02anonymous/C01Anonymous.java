@@ -12,10 +12,8 @@ public class C01Anonymous {
 			public void method1() {
 				System.out.println("재정의한 메소드");
 			}
-		};
-		
+		};		
 		o3.method1();
-	
 	}
 }
 
