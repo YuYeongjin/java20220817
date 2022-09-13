@@ -1,7 +1,7 @@
 package p99Codingbat;
+import java.util.Arrays;
 
 public class home5 {
-	import java.util.Arrays;
 	class Solution {
 	    public int[] solution(int N, int[] stages) {
 	    int[] answer = new int[N];
