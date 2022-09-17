@@ -4,6 +4,8 @@ import java.util.Arrays;
 import java.util.List;
 import java.util.stream.Collectors;
 
+import javax.print.attribute.standard.Fidelity;
+
 public class cafe091701 {
 	public static void main(String[] args) {
 //		int n =3;
@@ -28,7 +30,7 @@ public class cafe091701 {
         	int min = find.get(find.size()-1);
 	        int d = find.get(0);
 	        int count = -1;
-	        int gap =0;
+	        int gap =-1;
 	        //갭차이가 있다면
 	        System.out.println(d);
 	        System.out.println(find.get(1));
@@ -49,6 +51,9 @@ public class cafe091701 {
 	        			find.set(i, find.get(i)-gap); 
 	        			n-=gap;
 	        		}
+	        		System.out.println("1 실행");
+	        		System.out.println(n);
+			        System.out.println(find);
 	        	}else if (gap*(count+1)>=n){
 	        		for(int i = 0; i<=count;i++) {
 	        			find.set(i, find.get(i)-partN); 
@@ -65,9 +70,21 @@ public class cafe091701 {
 	        } else {  // 갭차이 없이 동일한 값들이라면
 	        	
 	        	if(n > (find.size()*min)) {
-	        		
+	        		for(int i = 0; i<find.size();i++) {
+	        			find.set(i, find.get(i)-min);
+	        		}
+	        		n-=find.size()*min;
+	        	} else {
+	        		int val = (int)n/find.size();
+	        		for(int i = 0; i<find.size();i++) {
+	        			find.set(i, find.get(i)-val);
+	        			n-=val;
+	        		}
+		        	System.out.println("2-2 실행하고 나감");
+		        	System.out.println(n);
+			        System.out.println(find);
+	        		break;
 	        	}
-	        	
 	        	
 	        	System.out.println("2번 실행");
 	        	System.out.println(n);
@@ -81,9 +98,11 @@ public class cafe091701 {
         	find.set(0, find.get(0)-1);
         	n--;
         }
+        find.re
         for(int k=0; k<find.size();k++){
         	answer += Math.pow(find.get(k),2);
         }
         System.out.println(answer);
+        
 	}
 }
