@@ -1,6 +1,7 @@
 package p99Codingbat;
 
-import java.util.*;
+import java.util.HashSet;
+import java.util.Set;
 public class home091501 {
 	public static void main(String[] args) {
 		int[] arr= {100,99,19,3,7,8,10};
