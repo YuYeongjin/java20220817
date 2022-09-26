@@ -8,8 +8,8 @@ public class kakao1 {
 	public static void main(String[] args) {
 		int cap = 4;
 		int n = 5;
-		int[] deliveries = {1,0,3,1,2};
-		int[] pickups = {0,3,0,4,0};
+		int[] deliveries = {1,0,3,1,2,4926};
+		int[] pickups = {0,3,0,4,0,4264};
 		boolean ok = false;
 		kakao1 a = new kakao1();
 		a.answer = 0;
@@ -17,11 +17,9 @@ public class kakao1 {
 		List<Integer> pic = Arrays.stream(pickups).boxed().collect(Collectors.toList());
 		a.go(0,cap,n,del,pic,ok);
 		System.out.println("정답"+a.answer);
-		
 	}
 	long answer=0;
 	void go (int index,int cap, int n, List<Integer> del, List<Integer> pic, boolean ok) {
-		
 		
 		System.out.println("go");
 		index = 0;
@@ -76,13 +74,12 @@ public class kakao1 {
 	void back(int index, int cap, int n, List<Integer> del, List<Integer> pic, boolean ok) {
 		
 		//탈출
-		
 		System.out.println("back");		
 		if(del.size()==0) {
 			index=cap;
 		}
 		if(ok==true) {
-			answer+=pic.size()*2;			
+			answer+=pic.size()*2;
 		}
 		if(pic.size()!=0) {
 			if(pic.get(pic.size()-1) >index) {
