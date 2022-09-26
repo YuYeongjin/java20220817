@@ -44,13 +44,7 @@ public class academy092005 {
 			num.add(Integer.valueOf(number.substring(i, i+1)));
 		}
 		System.out.println(num);
-		
-		for(int i = 0 ; i< arr.length;i++) {
-//			arr[i]=
-		}
-		
-		
-		
+
 		for(int ans : num) {
 			answer +=ans;
 		}
