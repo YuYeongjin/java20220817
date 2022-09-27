@@ -98,7 +98,6 @@ public class cafe091701 {
         	find.set(0, find.get(0)-1);
         	n--;
         }
-        find.re
         for(int k=0; k<find.size();k++){
         	answer += Math.pow(find.get(k),2);
         }
