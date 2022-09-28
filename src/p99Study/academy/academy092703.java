@@ -15,11 +15,8 @@ public class academy092703 {
 		a.answer=0;
 		boolean[] clear = new boolean[dungeons.length];
 		a.dfs(k,dungeons,k,clear);
-			
 		System.out.println(a.answer);
-		
 	}
-	
 	void dfs(int hp, int[][] gate,int k,boolean[] clear) {
 		int cnt=0;
 		int door = 0;
@@ -39,12 +36,11 @@ public class academy092703 {
 		}
 
 		System.out.println("잔여 체력 : " + hp);
-		for(int i = 0; i < gate.length;i++) {			
+		for(int i = 0; i < gate.length;i++) {
 			if(hp>=gate[i][0]&&clear[i]!=true) {
 				System.out.println((i+1)+"번째 던전 입장");
 				clear[i]=true;
 				dfs(hp-gate[i][1],gate,k,clear);
-				
 			}
 		}		
 	}
