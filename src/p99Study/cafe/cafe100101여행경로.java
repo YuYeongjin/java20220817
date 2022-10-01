@@ -33,7 +33,7 @@ public class cafe100101여행경로 {
 			if(tickets[j][0].equals("ICN")) {
 				System.out.println("스타트 = " +j+ Arrays.toString(tickets[j]));
 				now = tickets[j][1];
-				go.answerDfs.add(now);
+				go.answerDfs.add(tickets[j][0]);
 				break;
 			}
 		}
@@ -121,28 +121,22 @@ public class cafe100101여행경로 {
 	
 	void dfs(int index,String now,String[] path,String[][] tickets, boolean[] check) {
 		System.out.println("현재 공항" + now);
-		now = path[0];
+		now = path[1];
 		answerDfs.add(now);
-		if(answerDfs.size()==tickets.length) {
+		if(answerDfs.size()-1==tickets.length) {
 			System.err.println("최종도착");
-			answerDfs.add(now);
 			return;
 		}
-		
-		for(int i =0;i<tickets.length;i++) {
-			Arrays.parallelSort(tickets, (x,y)->y[1].compareTo(x[1]));
+		for(int i = 0 ; i <tickets.length;i++) {
 			if(tickets[i][0].equals(now)&&!check[i]) {
-			System.out.println(i+"ㄱㄱ"+Arrays.toString(tickets[i]));
-			check[i]=true;
-			path=tickets[i];
-			dfs(i,tickets[i][1],tickets[i],tickets,check);
+				index = i;
 			}
 		}
-		
-	
+		System.out.println(index+"ㄱㄱ"+Arrays.toString(tickets[index]));
+		check[index]=true;
+		path=tickets[index];
+		dfs(index,tickets[index][1],tickets[index],tickets,check);	
 	}
-	
-	
 }
 
 

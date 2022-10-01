@@ -20,33 +20,32 @@ public class academy092703던파 {
 		a.bfs(k, dungeons, k, clear);
 		System.out.println(a.answer);
 	}
-	void dfs(int hp, int[][] gate,int k,boolean[] clear) {
-		int cnt=0;
-		int door = 0;
-		for(int i = 0 ; i < gate.length;i++) {
-			if(hp<gate[i][0]) {
-				cnt++;
-			}		
-			if(clear[i]==true) {
-				door++;
-			}			
-		}
-		if(cnt==gate.length||door==gate.length) {
-			answer = cnt;
-			clear = new boolean[gate.length];
-			System.out.println("아웃");
-			return;
-		}
-
-		System.out.println("잔여 체력 : " + hp);
-		for(int i = 0; i < gate.length;i++) {
-			if(hp>=gate[i][0]&&clear[i]!=true) {
-				System.out.println((i+1)+"번째 던전 입장");
-				clear[i]=true;
-				dfs(hp-gate[i][1],gate,k,clear);
-			}
-		}		
-	}
+//	void dfs(int hp, int[][] gate,int k,boolean[] clear) {
+//		int cnt=0;
+//		int door = 0;
+//		for(int i = 0 ; i < gate.length;i++) {
+//			if(hp<gate[i][0]) {
+//				cnt++;
+//			}		
+//			if(clear[i]==true) {
+//				door++;
+//			}			
+//		}
+//		if(cnt==gate.length||door==gate.length) {
+//			answer = cnt;
+//			System.out.println("아웃");
+//			return;
+//		}
+//
+//		System.out.println("잔여 체력 : " + hp);
+//		for(int i = 0; i < gate.length;i++) {
+//			if(hp>=gate[i][0]&&clear[i]!=true) {
+//				System.out.println((i+1)+"번째 던전 입장");
+//				clear[i]=true;
+//				dfs(hp-gate[i][1],gate,k,clear);
+//			}
+//		}		
+//	}
 	void bfs(int hp, int[][] gate,int k,boolean[] clear) {
 		Queue<Integer> open = new LinkedList<>();
 		
