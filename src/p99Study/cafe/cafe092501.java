@@ -20,6 +20,7 @@ public class cafe092501 {
 	public String firstSolution(String number, int k) {
         String answer = "";
         List<Integer> num = new ArrayList<>();
+        
 		for(int i = 0; i<number.length();i++) {
 			num.add(Integer.valueOf(number.substring(i, i+1)));
 		}

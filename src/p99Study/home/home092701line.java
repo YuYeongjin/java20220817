@@ -23,7 +23,6 @@ public class home092701line {
 		for(int i = 1;i<=n;i++) {
 			ans.add(i);
 		}
-		
 		if(k==pac) {
 			answer = ans.stream().sorted((a,b)-> b-a).mapToInt(x->x).toArray();
 			System.out.println(Arrays.toString(answer));
@@ -44,7 +43,7 @@ public class home092701line {
 			if(k<=1) {
 				break;
 			}
-		}		
+		}
 		if(k==0&&ans.size()>=2) {
 			for(int i = 0; i<answer.length;i++) {
 				if(answer[i]==0) {
