@@ -1,4 +1,4 @@
-package p99Study.home;
+package p99programLv2;
 
 import java.util.*;
 public class home100101프린터 {

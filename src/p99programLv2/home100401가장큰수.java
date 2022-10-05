@@ -1,4 +1,4 @@
-package p99Study.home;
+package p99programLv2;
 
 import java.util.*;
 public class home100401가장큰수 {
@@ -6,7 +6,7 @@ public class home100401가장큰수 {
 	Set<String> set = new HashSet<>();
 	public static void main(String[] args) {
 		home100401가장큰수 go = new home100401가장큰수();
-		int[] numbers = {3, 319,30, 34, 380,32,300,309,39, 5, 9,91,330};
+		int[] numbers = {3, 319,30, 34, 380,32,300,309,39, 54,5, 9,91,330};
 //		int[] numbers = {70,0,0,0,0,0};
 		String[] num = new String[numbers.length];
 		for(int i = 0 ; i < numbers.length;i++) {
@@ -25,6 +25,8 @@ public class home100401가장큰수 {
 					n.add(num[l]);
 				}
 			}
+			n.sort((a,b)->a.compareTo(b));
+			System.out.println(n);
 			for(int j=0;j<n.size();j++) {
 				len+=n.get(j).length();
 			}
@@ -40,20 +42,17 @@ public class home100401가장큰수 {
 	void dfs(int i,String s,int length, List<String> num) {
 		
 		if(i==num.size()) {
-			System.out.println("set에 삽입됨 : "+ s);
-			if(set.add(s)==false) {
-				return;				
-			}
-			s="";
+			System.err.println("set에 삽입됨 : "+ s);
+			set.add(s);
+			
+			return;
 		}
-		if(s.length()>length) {
-			s="";
+		if(s.length()>length||i<0||i>num.size()) {
+			return;
 		}
-		System.out.println("현재 상황은?" + s);
+//		System.out.println("현재 상황은?" + s);
 			dfs(i+1,s+num.get(i),length,num);
 			dfs(i-1,s+num.get(i),length,num);
-		
-			
 	}
 	
 	

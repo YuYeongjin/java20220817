@@ -1,4 +1,4 @@
-package p99Study.academy;
+package p99programLv2;
 
 import java.util.List;
 import java.util.stream.Collectors;

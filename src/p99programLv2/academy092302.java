@@ -1,4 +1,4 @@
-package p99Study.academy;
+package p99programLv2;
 
 public class academy092302 {
 	public static void main(String[] args) {

@@ -1,4 +1,4 @@
-package p99Study.academy;
+package p99programLv2;
 
 import java.util.Arrays;
 import java.util.Comparator;

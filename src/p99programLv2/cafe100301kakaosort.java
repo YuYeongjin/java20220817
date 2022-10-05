@@ -1,4 +1,4 @@
-package p99Study.cafe;
+package p99programLv2;
 
 import java.util.*;
 

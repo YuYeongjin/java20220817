@@ -2,6 +2,7 @@ package p99Study.cafe;
 
 public class cafe2 {
 	public static void main(String[] args) {
+		System.out.println((1000*1001)/2);
 		String new_id = "=.=";
 		String answer= "";
 		String test = "";
