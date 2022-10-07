@@ -15,23 +15,30 @@ public class academy100602메뉴리뉴얼 {
 	public static void main(String[] args) {
 		academy100602메뉴리뉴얼 go = new academy100602메뉴리뉴얼();
 		
+//		String[] orders = {"ABCFG", "WQEWQEWQC", "CEQWEWQDE", "WEQRWQACDE", "BCFG", "ACWQEEDEH"};
 		String[] orders = {"ABCFG", "AC", "CDE", "ACDE", "BCFG", "ACDEH"};
-//		String[] orders = {"ABCFG", "AC", "ACB"};
-		int[] course = {2,3,4};
+		int[] course = {3,4,5};
+		
 		go.solution(orders, course);
 		System.out.println(Arrays.toString(go.answer));
 	}
 	
 	public String[] solution(String[] orders, int[] course) {
+		System.err.println(System.currentTimeMillis());
         for(int i = 0 ; i < orders.length;i++) {
         	food.clear();
         	for(int k = 0 ; k < course.length;k++) {
-        		dfs("",orders[i],course[k]);      
+        		if(orders[i].length()>=course[k]) {
+        			dfs("",orders[i],course[k]);
+        		}
         	}
         }
+        System.err.println(System.currentTimeMillis());
         food=menu.keySet();
+        System.out.println(menu);
         int[] max = new int[course.length];
         for(String k : food) {
+        	if(menu.get(k)==1)continue;
         	for(int i = 0 ; i < course.length;i++) {
         		if(menu.get(k)>=max[i]&&k.length()==course[i]) {
         			max[i]=menu.get(k);
@@ -41,6 +48,7 @@ public class academy100602메뉴리뉴얼 {
         }
         List<String> ans = new ArrayList<>();
         for(String k : food) {
+        	if(menu.get(k)==1)continue;
         	for(int i = 0 ; i < course.length;i++) {
         		if(menu.get(k)==max[i]&&k.length()==course[i]) {
         			ans.add(k);
@@ -66,7 +74,7 @@ public class academy100602메뉴리뉴얼 {
     				menu.put(a, 1);
     			} else {
     				menu.put(a, menu.get(a)+1);
-    			}         			
+    			}
     		}
 			return;
 		}
