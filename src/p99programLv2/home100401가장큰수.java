@@ -17,7 +17,6 @@ public class home100401가장큰수 {
 		System.out.println(Arrays.toString(num));
 		for(int i = 9; i >=1;i--) {
 			List<String> n = new ArrayList<>();
-			boolean[] check = new boolean[num.length];
 			int len = 0;
 			
 			for(int l = 0 ; l < num.length;l++) {
@@ -25,6 +24,7 @@ public class home100401가장큰수 {
 					n.add(num[l]);
 				}
 			}
+			boolean[] check = new boolean[n.size()];
 			n.sort((a,b)->a.length()-b.length());
 			System.err.println(n);
 			for(int j=0;j<n.size();j++) {
@@ -38,29 +38,21 @@ public class home100401가장큰수 {
 		}
 		System.out.println("정답은 "+go.answer);
 	}
-	
-	
-	
 	void dfs(String s,int length, List<String> num,boolean[] check) {
 		System.out.println(s);
-		if(!s.equals("")){
-			if(numb.size()==0||s.length()==length){
-				
-				numb.add(s);
-				System.out.println(numb);
-//				if(numb.size()>1) {
-//					numb.remove
-//				}
-			}
-		}
 		
 		if(s.length()==length) {
-			return;
+			set.add(s);
+
+			return;		
+		}
+		if(s.length()>length) {
+			check = new boolean[num.size()];
 		}
 		for(int next = 0;next<num.size();next++) {
-//			if(check[next])continue;
-//			check[next]=true;
-			dfs(s+num.get(next),length,new ArrayList<>(num).subList(0, next) ,check );
+			if(check[next])continue;
+			check[next]=true;
+			dfs(s+num.get(next),length,new ArrayList<>(num) ,check );
 		}
 	}
 

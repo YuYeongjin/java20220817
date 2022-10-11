@@ -1,10 +1,13 @@
 package p99programLv2;
 
+import java.util.HashMap;
+import java.util.Map;
 import java.util.Stack;
 import java.util.TreeSet;
 
 public class academy092005큰수만들기 {
 	TreeSet<String> find = new TreeSet<>((a,b)->b.compareTo(a));
+	Stack<Integer> nums = new Stack<>();
 	String answer ;
 	public static void main(String[] args) {
 		String number = "4177252841";
@@ -13,24 +16,12 @@ public class academy092005큰수만들기 {
 		int k = 4;
 		academy092005큰수만들기 go = new academy092005큰수만들기();
 //		System.out.println(go.solution(number, k));
-		System.out.println(go.gg(number, k));
-//		System.out.println(go.ggg(number, k));
+//		System.out.println(go.gg(number, k));
+		System.out.println(go.ggg(number, k));
 		
 	}
 	public String gg(String number, int k) {
 		StringBuilder num = new StringBuilder();
-		int cnt = 0;
-		for(int i=0;i<number.length();i++) {
-			if(number.substring(i, i+1).equals("9")) {
-				cnt++;
-			}
-		}
-		if(cnt==number.length()-k) {
-			for(int i = 0 ; i < cnt;i++) {
-				num.append("9");
-			}
-			return num.toString();
-		}
 		find.add(number);
 		for (int i = 0; i < k; i++) {
 			String word = find.first();
@@ -39,16 +30,44 @@ public class academy092005큰수만들기 {
 					num = new StringBuilder(word.substring(0, l) + word.substring(l + 1));
 					find.add(num.toString());
 					System.out.println(find);
-//					if (find.size() > 1) {
-//						find.remove(find.last());
-//					}
-				
+					if (find.size() > 1) {
+						find.remove(find.last());
+					}
 			}
 		}
 		return find.first();
 	}
 
+	public String ggg(String number, int k) {
+		StringBuilder num = new StringBuilder();
+		for(int i = 0; i < number.length();i++) {
+			if(nums.size()==0) {
+				nums.add(Integer.valueOf(number.substring(i,i+1)));				
+				continue;
+			}
+			if(nums.peek()>=Integer.valueOf(number.substring(i,i+1))) {
+				nums.add(Integer.valueOf(number.substring(i,i+1)));
+				
+			} else {
+				System.err.println("k 감소" + nums.peek()+ "빠짐");
+				k--;
+				nums.pop();
+				if(nums.size()==0||nums.peek()>=Integer.valueOf(number.substring(i,i+1))) {
+					nums.add(Integer.valueOf(number.substring(i,i+1)));					
+				}
+			}
+			System.out.println(nums);
+			if(k==0) {
+				return num.toString();
+			}
+			System.out.println(nums);
+		}
+		return num.toString();
+	}
 }
+	
+	
+
 
 
 
