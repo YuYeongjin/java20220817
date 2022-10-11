@@ -4,20 +4,20 @@ import java.util.*;
 public class home100401가장큰수 {
 	String answer="";
 	TreeSet<String> set = new TreeSet<>((a,b)->b.compareTo(a));
+	TreeSet<String> numb= new TreeSet<>((a,b)->b.compareTo(a));
 	public static void main(String[] args) {
 		home100401가장큰수 go = new home100401가장큰수();
-		int[] numbers = {3, 319,30, 34, 380,32,300,309,39, 54,5, 9,91,330};
+		int[] numbers = {3,39,313,393,300,30};
 //		int[] numbers = {70,0,0,0,0,0};
 		String[] num = new String[numbers.length];
 		for(int i = 0 ; i < numbers.length;i++) {
 			num[i]= ""+numbers[i];
-			go.set.add(""+numbers[i]);
 		}
-		System.err.println(go.set);
 		Arrays.parallelSort(num, (a,b)->b.compareTo(a));
 		System.out.println(Arrays.toString(num));
 		for(int i = 9; i >=1;i--) {
 			List<String> n = new ArrayList<>();
+			boolean[] check = new boolean[num.length];
 			int len = 0;
 			
 			for(int l = 0 ; l < num.length;l++) {
@@ -25,52 +25,47 @@ public class home100401가장큰수 {
 					n.add(num[l]);
 				}
 			}
-			System.out.println(n);
-	
-			boolean[] check = new boolean[n.size()];
-			
-			
-			
+			n.sort((a,b)->a.length()-b.length());
+			System.err.println(n);
 			for(int j=0;j<n.size();j++) {
 				len+=n.get(j).length();
 			}
 			if(len!=0) {
-				go.dfs("",len,n,check);	
+				go.numb= new TreeSet<>();
+				go.dfs("",len,n,check);
+				go.answer+=go.numb.first();
 			}
-			System.out.println(go.set);
 		}
-
-
-		
-		
-		
-		
-		System.out.println(go.answer);
+		System.out.println("정답은 "+go.answer);
 	}
-	
-	
-	
 	
 	
 	
 	void dfs(String s,int length, List<String> num,boolean[] check) {
+		System.out.println(s);
+		if(!s.equals("")){
+			if(numb.size()==0||s.length()==length){
+				
+				numb.add(s);
+				System.out.println(numb);
+//				if(numb.size()>1) {
+//					numb.remove
+//				}
+			}
+		}
 		
 		if(s.length()==length) {
-			set.add(s);
 			return;
 		}
-		
 		for(int next = 0;next<num.size();next++) {
-			dfs(s+num.remove(next),length,num,check);
+//			if(check[next])continue;
+//			check[next]=true;
+			dfs(s+num.get(next),length,new ArrayList<>(num).subList(0, next) ,check );
 		}
 	}
+
 	
-	
-	
-	
-	
-	
-	
+
 	
 	
 	

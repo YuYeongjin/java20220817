@@ -8,10 +8,13 @@ public class academy092005큰수만들기 {
 	String answer ;
 	public static void main(String[] args) {
 		String number = "4177252841";
+
+//		String number = "2154099";
 		int k = 4;
 		academy092005큰수만들기 go = new academy092005큰수만들기();
 //		System.out.println(go.solution(number, k));
 		System.out.println(go.gg(number, k));
+//		System.out.println(go.ggg(number, k));
 		
 	}
 	public String gg(String number, int k) {
@@ -33,53 +36,17 @@ public class academy092005큰수만들기 {
 			String word = find.first();
 			find.clear();
 			for (int l = 0; l < word.length(); l++) {
-				if (!word.substring(l, l + 1).equals("9")) {
 					num = new StringBuilder(word.substring(0, l) + word.substring(l + 1));
 					find.add(num.toString());
-					if (find.size() > 1) {
-						find.remove(find.last());
-					}
-				}
+					System.out.println(find);
+//					if (find.size() > 1) {
+//						find.remove(find.last());
+//					}
+				
 			}
 		}
 		return find.first();
 	}
-
-
-
-public String ggg(String number, int k) {
-	int numb =0;
-	int index = -1;
-	for(int i = 0 ; i < k;i++) {
-		if(Integer.valueOf(number.substring(i, i+1))>numb) {
-			numb= Integer.valueOf(number.substring(i, i+1));
-			index=i;
-		}
-		if(number.substring(i, i+1).equals("9")) {
-			index=i;
-			break;
-		}
-	}
-	k-=index;
-	number=number.substring(index);
-	
-//	find.add(number);
-//	String word=find.first();
-//	find.clear();
-	while(k!=0) {
-		StringBuilder num = new StringBuilder();
-		if(number.substring(0, 1).equals("9")) {
-			num.append(number.substring(0, 1));
-			k--;
-			number.substring(1);
-		}
-		
-	}
-	
-	
-	return find.first();
-	
-}
 
 }
 
