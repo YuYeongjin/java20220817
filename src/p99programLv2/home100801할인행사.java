@@ -17,16 +17,20 @@ public class home100801할인행사 {
 	
 	public int solution(String[] want, int[] number, String[] discount) {
         Map<String,Integer> needs = new HashMap<>();
+        Map<String,Integer> need = new HashMap<>();
         int answer=0;
         for(int i = 0 ; i < want.length;i++) {
         	needs.put(want[i], number[i]);
+        	need.put(want[i], number[i]);
         }
+        
         Queue<String> shop = new LinkedList<>();
         
         for(int i = 0 ; i < discount.length;i++) {
+        	System.out.println(i+"일차");
         	if(!needs.containsKey(discount[i])) {
-        		answer=i+1;
         		shop.clear();
+        		needs=need;
         		System.err.println("원하는목록 아님 패스");
         		continue;
         	} else {
@@ -35,7 +39,6 @@ public class home100801할인행사 {
         	}
         	if(shop.size()>10) {
         		needs.put(shop.peek(), needs.get(shop.poll())+1);
-        		answer++;
         		System.err.println("10개넘어서 뺌");
         	}
         	System.out.println(shop);
@@ -48,7 +51,7 @@ public class home100801할인행사 {
         		}
         		if(cnt==want.length) {
         			System.out.println(i);
-        			answer+=1;
+        			answer=i-8;
         			return answer;
         		}
         	}
