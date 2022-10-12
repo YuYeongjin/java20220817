@@ -48,7 +48,6 @@ public class academy092703던파 {
 //	}
 	void bfs(int hp, int[][] gate,int k,boolean[] clear) {
 		Queue<Integer> open = new LinkedList<>();
-		
 		int where = 0;
 		open.add(where);
 		clear[where] = true;

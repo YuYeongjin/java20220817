@@ -1,7 +1,7 @@
 package p99programLv2;
 
-import java.util.HashMap;
-import java.util.Map;
+import java.util.ArrayList;
+import java.util.List;
 import java.util.Stack;
 import java.util.TreeSet;
 
@@ -17,7 +17,7 @@ public class academy092005큰수만들기 {
 		academy092005큰수만들기 go = new academy092005큰수만들기();
 //		System.out.println(go.solution(number, k));
 //		System.out.println(go.gg(number, k));
-		System.out.println(go.ggg(number, k));
+		System.out.println("정답" + go.ggg(number, k));
 		
 	}
 	public String gg(String number, int k) {
@@ -37,39 +37,78 @@ public class academy092005큰수만들기 {
 		}
 		return find.first();
 	}
-
+///////////////////////정답//////////////////////////////////
 	public String ggg(String number, int k) {
-		StringBuilder num = new StringBuilder();
-		for(int i = 0; i < number.length();i++) {
-			if(nums.size()==0) {
-				nums.add(Integer.valueOf(number.substring(i,i+1)));				
-				continue;
+		 	StringBuilder num = new StringBuilder();
+	        Stack<Integer> nums = new Stack<>();
+	        int x = 0;
+			while(k!=0) {
+				if(nums.size()==0||nums.peek()==9||nums.peek()>=Integer.valueOf(number.substring(x, x+1))) {
+					nums.push(Integer.valueOf(number.substring(x, x+1)));
+					x++;
+					if(number.length()==x) {
+						break;
+					}
+				} else {
+					k--;
+					nums.pop();
+				}
+				System.err.println(nums);
 			}
-			if(nums.peek()>=Integer.valueOf(number.substring(i,i+1))) {
-				nums.add(Integer.valueOf(number.substring(i,i+1)));
-				
-			} else {
-				System.err.println("k 감소" + nums.peek()+ "빠짐");
-				k--;
-				nums.pop();
-				if(nums.size()==0||nums.peek()>=Integer.valueOf(number.substring(i,i+1))) {
-					nums.add(Integer.valueOf(number.substring(i,i+1)));					
+			if(k>0) {
+				for(int i = 0 ; i < k;i++) {
+					nums.pop();
 				}
 			}
-			System.out.println(nums);
-			if(k==0) {
-				return num.toString();
+			for(int i = 0 ; i < nums.size();i++) {
+				num.append(nums.get(i));
 			}
-			System.out.println(nums);
-		}
-		return num.toString();
+			if(k==0&&number.length()>x) {
+				for(int i =x; i<number.length();i++) {
+					num.append(number.substring(i, i+1));
+				}
+			}
+			return num.toString();
 	}
 }
-	
-	
+/*
+	 StringBuilder num = new StringBuilder();
+        Stack<Integer> nums = new Stack<>();
+		List<Integer> numList = new ArrayList<>();
+		for(int i =0;i<number.length();i++) {
+			numList.add(Integer.valueOf(number.substring(i, i+1)));
+		}
+		while(k!=0) {
+			if(nums.size()==0) {
+				nums.push(numList.remove(0));
+			}
+			if(nums.peek()>=numList.get(0)) {
+				nums.push(numList.remove(0));
+			} else {
+				k--;
+				nums.pop();
+			}
+			if(numList.size()==0) {
+				nums.pop();
+				k--;
+			}
+		}
+		for(int i = 0 ; i < nums.size();i++) {
+			num.append(nums.get(i));
+		}
+		if(k==0&&numList.size()>0) {
+			for(int i =0; i<numList.size();i++) {
+				num.append(numList.get(i));
+			}
+		}
+		return num.toString();
 
 
 
+
+
+
+*/
 
 
 

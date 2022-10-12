@@ -1,64 +1,101 @@
 package p99programLv2;
 
-import java.util.*;
+import java.util.ArrayList;
+import java.util.Arrays;
+import java.util.List;
+
 public class home100401가장큰수 {
-	String answer="";
-	TreeSet<String> set = new TreeSet<>((a,b)->b.compareTo(a));
-	TreeSet<String> numb= new TreeSet<>((a,b)->b.compareTo(a));
+	int count ;
+	
 	public static void main(String[] args) {
 		home100401가장큰수 go = new home100401가장큰수();
-		int[] numbers = {3,39,313,393,300,30};
-//		int[] numbers = {70,0,0,0,0,0};
+		StringBuilder answer=new StringBuilder();
+		int[] numbers = {3,39,303,393,330,30,1,2,4,5,6,7,8};
+		
 		String[] num = new String[numbers.length];
 		for(int i = 0 ; i < numbers.length;i++) {
 			num[i]= ""+numbers[i];
 		}
-		Arrays.parallelSort(num, (a,b)->b.compareTo(a));
-		System.out.println(Arrays.toString(num));
+		Arrays.parallelSort(num, (a,b)->a.charAt(0)-b.charAt(0));
+		System.out.println(go.start(num));
+		System.out.println();
+
+		int l =num.length-1;
 		for(int i = 9; i >=1;i--) {
 			List<String> n = new ArrayList<>();
-			int len = 0;
 			
-			for(int l = 0 ; l < num.length;l++) {
+			for(; l >=0;l--) {
 				if(Integer.valueOf(num[l].substring(0, 1))==i) {
 					n.add(num[l]);
+				} else {
+					break;
+				}				
+			}
+			if(n.size()==0) continue;
+			if(n.size()==1) answer.append(n.remove(0));
+			if(n.size()>1) {
+				String[] numS = new String[n.size()];
+				go.count=n.size();
+				for(int j=0;j<n.size();j++) {
+					numS[j]=n.get(j);
 				}
-			}
-			boolean[] check = new boolean[n.size()];
-			n.sort((a,b)->a.length()-b.length());
-			System.err.println(n);
-			for(int j=0;j<n.size();j++) {
-				len+=n.get(j).length();
-			}
-			if(len!=0) {
-				go.numb= new TreeSet<>();
-				go.dfs("",len,n,check);
-				go.answer+=go.numb.first();
-			}
+				for(int j=0;j<numS.length;j++) {
+					go.start(numS);
+					go.count--;
+					answer.append(numS[numS.length-j-1]);
+				}				
+			}			
 		}
-		System.out.println("정답은 "+go.answer);
+		System.out.println("정답은 "+answer);
 	}
-	void dfs(String s,int length, List<String> num,boolean[] check) {
-		System.out.println(s);
-		
-		if(s.length()==length) {
-			set.add(s);
 
-			return;		
+	String[] start(String[] numbers) {
+		StringBuilder numSum1 = new StringBuilder();
+		StringBuilder numSum2 = new StringBuilder();
+		for(int cnt = 1; cnt < count;cnt++) {
+			numSum1 = new StringBuilder();numSum2 = new StringBuilder();
+			numSum1.append(numbers[cnt-1]).append(numbers[cnt]);
+			numSum2.append(numbers[cnt]).append(numbers[cnt-1]);
+			if(Integer.valueOf(numSum1.toString())>Integer.valueOf(numSum2.toString())) {
+				String change = numbers[cnt-1];
+				numbers[cnt-1]= numbers[cnt];
+				numbers[cnt]=change;
+			}
 		}
-		if(s.length()>length) {
-			check = new boolean[num.size()];
-		}
-		for(int next = 0;next<num.size();next++) {
-			if(check[next])continue;
-			check[next]=true;
-			dfs(s+num.get(next),length,new ArrayList<>(num) ,check );
-		}
+		return numbers;
 	}
 
 	
-
 	
+	
+// A, B 를 확인해서 AB BA중에 더 큰 방향으로 정렬하기
+//	
+//	String start(List<String> n) {
+//		StringBuilder answer=new StringBuilder();
+//		List<Integer> numl = new ArrayList<>();
+//		List<Integer> numberList = new ArrayList<>();
+//		for(int i = 0; i < n.size();i++) {
+//			numberList.add(Integer.valueOf(n.get(i))); 
+//		}
+//		StringBuilder numSum1 = new StringBuilder();
+//		StringBuilder numSum2 = new StringBuilder();
+//		while(numberList.size()!=1) {
+//			for(int i = 1; i <numberList.size();i++) {
+//				numSum1.append(numberList.get(i)).append(numberList.get(i-1));
+//				numSum2.append(numberList.get(i-1)).append(numberList.get(i));
+//				if(Integer.valueOf(numSum1.toString())>Integer.valueOf(numSum2.toString())) {
+//					
+//				}
+//			}
+//		}
+//		numl.add(numberList.remove(0));
+//		for(int i = 0 ; i < numl.size();i++) {
+//			answer.append(numl.get(i).toString());
+//		}
+//		return answer.toString();
+//	}
+//
+//	
 	
 	
 	
