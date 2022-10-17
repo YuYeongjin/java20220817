@@ -1,4 +1,4 @@
-package p99Study.cafe;
+package p99programLv3;
 
 import java.util.ArrayList;
 import java.util.Arrays;
@@ -22,7 +22,8 @@ public class cafe100101여행경로 {
 //		String[][] tickets={{"ICN", "SFO"}, {"ICN", "ATL"}, {"SFO", "ATL"}, {"ATL", "ICN"}, {"ATL","SFO"}};
 //		String[][] tickets={{"ICN", "AOO"}, {"AOO", "BOO"}, {"BOO", "COO"}, {"COO", "DOO"}, {"DOO", "EOO"}, {"EOO", "DOO"}, {"DOO", "COO"}, {"COO", "BOO"}, {"BOO", "AOO"}};
 		cafe100101여행경로 go = new cafe100101여행경로();
-		Arrays.parallelSort(tickets, (x,y)->x[1].compareTo(y[1]));
+		Arrays.parallelSort(tickets, (x,y)->x[1].compareTo(y[0]));
+		
 		System.out.println(Arrays.deepToString(tickets));
 		
 		
