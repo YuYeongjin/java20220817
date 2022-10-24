@@ -10,12 +10,15 @@ public class academy102402멀쩡한사각형 {
     }
     public long solution(int w, int h) {
         double big;
-        if(w>h){
-            big = w/h;
+        double a = w;
+        double b = h;
+        if(a>b){
+            big = a/b;
         } else {
-            big = h/w;
+            big = b/a;
         }
-        long answer = w>h? (long)(w*h-(double) (w/h)*w): (long)(w*h-(double) (w/h)*h);
+        System.out.println(big);
+        long answer = w>h? (long)(w*h-big*w): (long)(w*h-big*h);
 
         return answer;
     }
