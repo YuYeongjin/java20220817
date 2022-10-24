@@ -1,7 +1,5 @@
 package ch06.book.s060802;
 
-import java.util.Arrays;
-
 public class CarExample {
 	public static void main(String[] args) {
 		Car myCar = new Car();

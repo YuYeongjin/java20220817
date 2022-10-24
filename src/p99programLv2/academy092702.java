@@ -1,7 +1,5 @@
 package p99programLv2;
 
-import java.util.Arrays;
-import java.util.Set;
 import java.util.TreeSet;
 
 public class academy092702 {

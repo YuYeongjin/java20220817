@@ -2,8 +2,6 @@ package p99programLv2;
 
 import java.util.HashSet;
 import java.util.Set;
-import java.util.LinkedList;
-import java.util.Queue;
 
 public class academy101403연속부분수열합의개수 {
 	Set<Integer> number = new HashSet<>();

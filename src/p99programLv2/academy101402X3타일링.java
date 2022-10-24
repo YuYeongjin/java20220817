@@ -1,7 +1,5 @@
 package p99programLv2;
 
-import java.util.Arrays;
-
 public class academy101402X3타일링 {
 	
 	public static void main(String[] args) {

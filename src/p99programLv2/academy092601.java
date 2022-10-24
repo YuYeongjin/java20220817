@@ -1,7 +1,6 @@
 package p99programLv2;
 
 import java.util.HashSet;
-import java.util.Set;
 
 public class academy092601 {
 	String answer ;

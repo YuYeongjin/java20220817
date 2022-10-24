@@ -25,5 +25,5 @@ public class Student {
 		this.live = live;
 	}
 	
-z	
+
 }

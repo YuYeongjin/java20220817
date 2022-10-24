@@ -81,20 +81,7 @@ public class academy102101조이스틱 {
 		if(word-65>=13)	return 26-(word-65);
 		return word-65;
 	}
-//}
-
-	
-	void dfs() {
-		
-		
-		
-		
-		dfs();
-		dfs();
-	}
-
 }
-
 
 
 

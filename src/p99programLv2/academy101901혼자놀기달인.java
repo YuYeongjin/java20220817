@@ -9,7 +9,6 @@ public class academy101901혼자놀기달인 {
 //	List<Integer> ans = new ArrayList<>();
 	int answer = 0;
 	public static void main(String[] args) {
-		
 	academy101901혼자놀기달인 go = new academy101901혼자놀기달인();
 //	int[] card = {8,6,3,7,2,5,1,4};
 	int[] card = {1,2};

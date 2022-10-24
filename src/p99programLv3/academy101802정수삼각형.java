@@ -1,7 +1,5 @@
 package p99programLv3;
 
-import java.util.Arrays;
-
 import java.util.TreeSet;
 
 public class academy101802정수삼각형 {
