@@ -4,19 +4,47 @@ public class academy102402멀쩡한사각형 {
     public static void main(String[] args) {
         academy102402멀쩡한사각형 go = new academy102402멀쩡한사각형();
 
-        int w = 12;
-        int h = 8;
-        System.out.println(go.solution(w,h));
+        int w = 13;
+        int h = 6;
+//        System.out.println(go.solution(w,h));
+        System.out.println(go.solution2(w,h));
+
     }
     public long solution(int w, int h) {
-        double big;
+        long answer=0;
+        double big =0; double small=0;
         if(w>h){
-            big = w/h;
-        } else {
-            big = h/w;
+            big=w; small=h;
+        } else{
+            big=h; small=w;
         }
-        long answer = w>h? (long)(w*h-(double) (w/h)*w): (long)(w*h-(double) (w/h)*h);
+        System.out.println(big + " / / " + small);
+        double a=big/small;
+        if(a!=(long)a){
+            long b = (long)a+1;
+            System.err.println(b);
+            return (long)(big*small-b*small);
+        }
+        System.out.println(a);
 
-        return answer;
+        return (long)(big*small-a*small);
+    }
+
+    public long solution2(int w, int h) {
+        double big =0; double small=0;
+        if(w>h){
+            big=w; small=h;
+        } else{
+            big=h; small=w;
+        }
+        int i = (int) small;
+        for(;i>=1;i--){
+            if(w%i==0 && h%i==0){
+                break;
+            }
+        }
+
+
+        return (long)(big*small-small);
     }
 }

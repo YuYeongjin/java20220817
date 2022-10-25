@@ -1,5 +1,8 @@
 package p99programLv2;
 
+
+import ch06.book.s061301.package2.C;
+
 import java.util.Arrays;
 import java.util.TreeSet;
 
@@ -12,7 +15,7 @@ public class academy102101조이스틱 {
 		
 		academy102101조이스틱 go = new academy102101조이스틱();
 //		String name = "JEROEN";
-		String name = "ZAZAZAZ";
+		String name = "JAN";
 //		String name = "ACAAGWEAAAAAAAAZAAAAAAAATYAAAAWEAAGSAAAAAACA";
 //		String name = "AAIAPB";
 //		String name = "BABAAABB";
@@ -27,37 +30,32 @@ public class academy102101조이스틱 {
         	word[i]=change(name.charAt(i));
         	if(word[i]!=0) count++;
         }
-        dfs(0,0,now,word);
-        
-        System.out.println(ans);
-//        System.out.println(Arrays.toString(word)+ " 현재 answer : " + answer);
+		System.out.println(Arrays.toString(word));
+        dfs("",now,word,name);
         return ans.first();
     }
-	void dfs(int method,int cnt, Cursor now,int[] word) {
-		answer+=method;
-		if(cnt==count) {
-			ans.add(answer);
-			return;
-		}
-		
-		dfs(Front(now,word),cnt+1, now, word);
-        dfs(Back(now,word),cnt+1, now, word);
-	}
 	int Front(Cursor now,int[] word) {
 		int a = 0;
 		int front =0;
 		int where = now.x;
+		System.out.println(now.x);
 		for(int i = 0 ; i < word.length;i++) {
-			if(where==word.length-1) {where=0;}
-			else {where++;}
-        	if(word[where]==0) {front++;}
-        	else {break;}
+			if(word[where]==0) {
+				front++;
+			}else {
+				break;
+			}
+			if(where==word.length-1) {
+				where=0;
+			}else {
+				where++;
+			}
         }
-		now = new Cursor(where);
+		now.x=where;
 		a+=front;
 		a+=word[now.x];
 		word[now.x]=0;
-		System.out.println(" 프론트 현재 커서 : " + now.x + Arrays.toString(word));
+		System.out.println(" 프론트 현재 커서 : " + now.x +  " 움직인 거리 " + front + ">" +Arrays.toString(word));
 		return a;
 	}
 	int Back(Cursor now,int[] word) {
@@ -65,22 +63,53 @@ public class academy102101조이스틱 {
         int whereb = now.x;
         int back =0;
         for(int i = 0 ; i < word.length;i++) {
+			if(word[whereb]==0) {back++;}
+			else {break;}
         	if(whereb==0) {whereb=word.length-1;}
         	else {whereb--;}
-        	if(word[whereb]==0) {back++;}
-        	else {break;}
+
         }
-        now = new Cursor(whereb);
+        now.x=whereb;
         a+=back;
         a+=word[now.x];
         word[now.x]=0;
-        System.out.println(" 백 현재 커서 : " + now.x+ Arrays.toString(word));
+        System.out.println(" 백 현재 커서 : " + now.x+  " 움직인 거리 " + back + ">" +Arrays.toString(word));
         return a;
 	}
 	int change(int word) {
 		if(word-65>=13)	return 26-(word-65);
 		return word-65;
 	}
+	void  dfs (String a,Cursor now, int[] word,String name){
+		if(a.length()== count){
+			wordSet(name,word);
+			System.out.println(a);
+			dfsgo(a,now,word);
+			return;
+		}
+		dfs(a+"F", now, word,name);
+		dfs(a+"B", now, word,name);
+	}
+	void  dfsgo(String a, Cursor now, int[] word){
+		int sum =0;
+		now = new Cursor(0);
+		for(int i =0;i<a.length();i++){
+			if(a.substring(i,i+1).equals("F")){
+				sum+=Front(new Cursor(0),word);
+			} else{
+				sum+= Back(new Cursor(0),word);
+			}
+			System.out.println("현재 ans = " + sum);
+		}
+		System.out.println(" 진행은 : " + a + " 결과는 ? " + sum );
+		ans.add(sum);
+	}
+	void wordSet(String name,int[] word){
+		for(int i = 0 ; i < name.length();i++) {
+			word[i]=change(name.charAt(i));
+		}
+	}
+
 }
 
 
