@@ -53,5 +53,4 @@ public class academy1026네트워크 {
             }
         }
     }
-
 }
