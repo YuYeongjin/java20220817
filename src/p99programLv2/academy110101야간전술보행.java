@@ -1,7 +1,6 @@
 package p99programLv2;
 
-import java.util.LinkedList;
-import java.util.Queue;
+import java.util.Arrays;
 
 public class academy110101야간전술보행 {
     class Work{
@@ -21,9 +20,39 @@ public static void main(String[] args) {
 public int solution(int distance, int[][] scope, int[][] times) {
         int answer = 0;
         Work now = new Work(0,0);
-        Queue<Work> field = new LinkedList<>();
-
-
-        return answer;
+        int[][] find = new int[scope.length][2];
+        for(int i = 0 ; i < distance;i++) {
+            now=new Work(now.time+1,now.where+1);
+            System.out.println("현재 거리 : "+now.time);
+            time(find, times);
+            answer = where(now.where,scope,find);
+            System.out.println(Arrays.deepToString(find));
+            if(answer!=0){
+                return answer;
+            }
+        }
+        return distance;
+    }
+    static void time(int[][] find, int[][] times) {
+        for(int i = 0 ; i < times.length ; i++) {
+            find[i][1]++;
+            if(find[i][0] ==0&&find[i][1] > times[i][0]) {
+                find[i][1]=1;
+                find[i][0]=1;
+            } else if(find[i][0] ==1&&find[i][1] > times[i][1]){
+                find[i][1]=1;
+                find[i][0]=0;
+            }
+        }
+    }
+    static int where(int where,int[][] scope,int[][] find){
+        for(int i =0; i < scope.length;i++) {
+            if((scope[i][0]>=where&&scope[i][1]<=where)||(scope[i][1]>=where&&scope[i][0]<=where)){
+                if(find[i][0]==0){
+                    return where;
                 }
+            }
+        }
+        return 0;
+    }
 }
