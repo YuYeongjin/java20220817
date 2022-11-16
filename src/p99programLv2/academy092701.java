@@ -50,5 +50,4 @@ public class academy092701 {
 		}
 		System.out.println(Arrays.toString(answer));
     }
-	
 }

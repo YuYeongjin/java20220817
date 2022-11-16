@@ -2,7 +2,7 @@ package p99programLv2;
 
 import java.util.Arrays;
 
-public class academy092201_lv2 {
+public class academy092201땅따먹기 {
 	public static void main(String[] args) {
 //		int[][] land = {{4,3,2,1},{1002,2,2,1},{6,6,6,4},{8,7,6,5},{11,10,10,9},{0,15,5,0}};
 //		int[][] land = {{1,2,3,5},{5,6,7,8},{4,3,2,1}};
