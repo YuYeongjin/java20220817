@@ -1,8 +1,8 @@
 package p99programLv2;
 
-public class academy102402멀쩡한사각형 {
+public class academy102402멀쩡한사각형_notsolve {
     public static void main(String[] args) {
-        academy102402멀쩡한사각형 go = new academy102402멀쩡한사각형();
+        academy102402멀쩡한사각형_notsolve go = new academy102402멀쩡한사각형_notsolve();
 
         int w = 13;
         int h = 6;

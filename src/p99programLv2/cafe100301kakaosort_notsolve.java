@@ -2,9 +2,9 @@ package p99programLv2;
 
 import java.util.*;
 
-public class cafe100301kakaosort {
+public class cafe100301kakaosort_notsolve {
 	public static void main(String[] args) {
-		cafe100301kakaosort go = new cafe100301kakaosort();
+		cafe100301kakaosort_notsolve go = new cafe100301kakaosort_notsolve();
 //		String[] files={"F-5 Freedom Fighter", "B-50 Superfortress", "A-10 Thunderbolt II", "f-9 Tomcat","F-1214 Tomcat","f-07 Tomcat","g-07 Tomcat"};
 		String[] files={"img12.png", "img10.png", "img02.png", "img1.png", "IMG01.GIF", "img2.JPG"};
 		

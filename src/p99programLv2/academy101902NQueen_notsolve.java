@@ -3,13 +3,13 @@ package p99programLv2;
 import java.util.Arrays;
 import java.util.Stack;
 
-public class academy101902NQueen {
+public class academy101902NQueen_notsolve {
 	int answer = 0; int[][] ans;
 	class Spot {Spot(int x, int y) {this.x = x;this.y = y;}int x, y;}
 	Stack<Spot> point = new Stack<>();Spot now;
 
 	public static void main(String[] args) {
-		academy101902NQueen go = new academy101902NQueen();
+		academy101902NQueen_notsolve go = new academy101902NQueen_notsolve();
 		int n = 5;
 		System.out.println(go.solution(n));
 	}
