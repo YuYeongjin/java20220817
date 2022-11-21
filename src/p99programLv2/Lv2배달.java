@@ -45,13 +45,15 @@ public class Lv2배달 {
                     if (road[i][0] != now.x&& road[i][1] != now.x) continue;
                     if (now.distance < road[i][2]) continue;
                     // 해당 N의 마을을 도달하는 road[i][2]값중 최솟값만 check에 입력 , 아니면 continue처리
-//                    if (check[i]) continue;
-//                    check[i] = true;
+                    if (check[i]>road[i][2]) continue;
+
                     if(now.x==road[i][1]){
                         System.out.println("현재 : " + now.x + " 에서" + road[i][0]+ " 갈거임 잔여 distance는 " + (now.distance- road[i][2]));
+                        check[i] = road[i][2];
                         run.add(new delevery(road[i][0],  now.distance - road[i][2]));
                     } else{
                         System.out.println("현재 : " + now.x + " 에서" + road[i][1]+ " 갈거임 잔여 distance는 " + (now.distance- road[i][2]));
+                        check[i] = road[i][2];
                         run.add(new delevery(road[i][1],  now.distance - road[i][2]));
 
                     }
