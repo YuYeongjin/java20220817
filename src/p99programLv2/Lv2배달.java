@@ -31,32 +31,38 @@ public class Lv2배달 {
     void bfs(int N,int[][] road, int K) {
         delevery now = new delevery(1,  K);
         Queue<delevery> run = new LinkedList<>();
-        int[] check = new int[N];
+        int[] check = new int[N+1];
+        boolean[] b = new boolean[N+1];
         for(int i =0; i < check.length; i++) {
-            check[i] = Integer.MAX_VALUE;
+            check[i] = 10001;
         }
         run.add(now);
 
         while (!run.isEmpty()) {
             now = run.remove();
-            System.out.println("시작함 현재의 위치는 ? " + now.x + " , 거리는 : " +now.distance);
+//            System.out.println("시작함 현재의 위치는 ? " + now.x + " , 거리는 : " +now.distance);
                 city.add(now.x);
                 for (int i = 0; i < road.length; i++) {
                     if (road[i][0] != now.x&& road[i][1] != now.x) continue;
                     if (now.distance < road[i][2]) continue;
-                    // 해당 N의 마을을 도달하는 road[i][2]값중 최솟값만 check에 입력 , 아니면 continue처리
-                    if (check[i]>road[i][2]) continue;
 
                     if(now.x==road[i][1]){
+                        if (check[road[i][0]]<road[i][2]) continue;
+                        if(b[road[i][0]]) continue;
                         System.out.println("현재 : " + now.x + " 에서" + road[i][0]+ " 갈거임 잔여 distance는 " + (now.distance- road[i][2]));
-                        check[i] = road[i][2];
                         run.add(new delevery(road[i][0],  now.distance - road[i][2]));
-                    } else{
+                        check[road[i][0]] = road[i][2];
+                        b[road[i][0]] = true;
+                    } else if (now.x==road[i][0]){
+                        if (check[road[i][1]]<road[i][2]) continue;
+                        if(b[road[i][1]]) continue;
                         System.out.println("현재 : " + now.x + " 에서" + road[i][1]+ " 갈거임 잔여 distance는 " + (now.distance- road[i][2]));
-                        check[i] = road[i][2];
                         run.add(new delevery(road[i][1],  now.distance - road[i][2]));
-
+                        check[road[i][1]] = road[i][2];
+                        b[road[i][1]] = true;
                     }
+
+
                 }
         }
     }
