@@ -43,8 +43,6 @@ public class academy102402멀쩡한사각형_notsolve {
                 break;
             }
         }
-
-
         return (long)(big*small-small);
     }
 }
